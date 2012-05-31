@@ -1,0 +1,4 @@
+module: jamtur01/httpauth
+version: 0.0.1
+url: file:///var/lib/puppet/puppet-module/cache/http_forge_puppetlabs_com-75a31f1d6f1ef6eb63b4479b3512ee1508209a7f/jamtur01-httpauth-0.0.1.tar.gz
+installed: Tue Feb 21 22:34:49 +0100 2012

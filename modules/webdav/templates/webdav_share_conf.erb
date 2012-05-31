@@ -1,0 +1,23 @@
+Alias /<%= name %> "<%= path %>"
+Alias /<%= name %>/ "<%= path %>"
+<Location /<%= name %>>
+	Options Indexes
+	Dav on
+	AuthType Digest
+	AuthName "DBBOX"
+	AuthDigestDomain DBBOX https://<%= fqdn %>/<%= name %>
+	AuthDigestProvider	file
+	AuthUserFile /etc/httpd/conf.d/digest.users.db
+	AuthGroupFile /etc/httpd/conf.d/digest.groups.db
+<% if allowuser -%>	require <%= allowuser %><% end -%>
+<% if allowgroup -%>	require group <%= allowgroup %><% end -%>
+
+<Limit PUT DELETE PROPPATCH MKCOL COPY MOVE LOCK UNLOCK>
+<% if rwuserlist -%>	require <%= rwuserlist %><% end -%>
+
+<% if rwgrouplist -%>	require group <%= rwgrouplist %><% end -%>
+
+</Limit>
+</Location>
+
+

@@ -1,0 +1,38 @@
+#
+# HTTPS server configuration
+#
+
+server {
+    listen       10000;
+#    server_name  _;
+
+    ssl                  on;
+    ssl_certificate      /etc/pki/tls/certs/dbbox-chain.pem;
+    ssl_certificate_key  /etc/pki/tls/private/private-key.key;
+
+    ssl_session_timeout  5m;
+
+    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    ssl_prefer_server_ciphers   on;
+
+    location /sf/ {
+	    root /opt/dbboxmanager/lib/vendor/symfony/data/web/;
+	    expires max;
+    }
+
+    location ~ ^/(index|frontend|frontend_dev|backend|backend_dev)\.php$ {
+	    root   /opt/dbboxmanager/web;
+	    include fastcgi_params;
+	    fastcgi_param PATH_TRANSLATED $document_root$fastcgi_script_name;
+	    fastcgi_param HTTPS on;
+	    fastcgi_pass   127.0.0.1:9000;
+    }
+  location / {
+    root   /opt/dbboxmanager/web/;
+    index index.php;
+    try_files $uri /index.php?$args;
+  }
+
+}
+

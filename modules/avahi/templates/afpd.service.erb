@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+	<name replace-wildcards="yes">%h(AFP)</name>
+	<service>
+		<type>_afpovertcp._tcp</type>
+		<port>548</port>
+	</service>
+	<service>
+		<type>_device-info._tcp</type>
+		<port>0</port>
+		<txt-record>model=RackMac</txt-record>
+	</service>
+	<service>
+		<type>_adisk._tcp</type>
+		<port>9</port>
+		<txt-record>sys=waMA=00:08:9B:CA:27:A5,adVF=0x100</txt-record>
+		<txt-record>dk0=adVF=0x83,adVN=Time Machine</txt-record>
+	</service>
+</service-group>

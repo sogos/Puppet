@@ -1,0 +1,61 @@
+{
+  "dependencies": [
+
+  ],
+  "name": "jamtur01-puppet-httpauth",
+  "author": "",
+  "license": "",
+  "version": "0.0.1",
+  "checksums": {
+    "spec/spec_helper.rb": "822bbd41e1af3197e3aa8d14ddd0b615",
+    "lib/puppet/type/httpauth.rb": "beab42ad1086202db040c72bc6783494",
+    "spec/unit/type/httpauth.rb": "a42a6d3b57debd7fca90d832ba7094a7",
+    "Rakefile": "dbf54a505861bcbc52f024bffb9439a5",
+    "README.markdown": "0d5e84e3348d44b61c2673372b604dfa",
+    "TODO": "abc144afefbc13f285cca2773ee55e7d",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "lib/puppet/provider/httpauth/httpauth.rb": "b0f97c8929537caa76881bcaf161b820",
+    "Modulefile": "2d1cacaef0bbc7c03e0d831856f4c723"
+  },
+  "types": [
+    {
+      "name": "httpauth",
+      "doc": "Manage HTTP Basic or Digest password files.    httpauth { 'user':                           file => '/path/to/password/file',          password => 'password',                    mechanism => basic,                        ensure => present,                       }                                      ",
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "The name of the user to be managed."
+        },
+        {
+          "name": "file",
+          "doc": "The HTTP password file to be managed. If it doesn't exist it is created."
+        },
+        {
+          "name": "password",
+          "doc": "The password in plaintext."
+        },
+        {
+          "name": "realm",
+          "doc": "The realm - defaults to nil and mainly used for Digest authentication."
+        },
+        {
+          "name": "mechanism",
+          "doc": "The authentication mechanism to use - either basic or digest. Default to basic.  Valid values are ``basic``, ``digest``."
+        }
+      ],
+      "providers": [
+        {
+          "name": "httpauth",
+          "doc": "Manage HTTP Basic and Digest authentication files    "
+        }
+      ],
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "  Valid values are ``present``, ``absent``."
+        }
+      ]
+    }
+  ],
+  "source": ""
+}
